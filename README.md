@@ -6,14 +6,14 @@ To use this program install python (and possible pip)
 On windows:
 	go to python.org and install the newewest verison of python3
 	go to the command line and type this command
-		python3 -m pip install pytz, ics, datetime
+		python3 -m pip install pytz, ics, datetime, requests
 	then you can run the program by running this in the command line in the program folder
-		python3 main.py
+		py main.py
 On linux (debian):
 	run this
 		sudo apt install python3
 		sudo apt install pip
-		python3 -m pip install pytz, ics, datetime
+		python3 -m pip install pytz, ics, datetime, requests
 	to run the program run this
 		python3 main.py
 none of the above was proofread or tested, if it doesnt work, look at the python error and install whatever library it says is missing
