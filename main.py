@@ -5,18 +5,18 @@ import scrape
 
 semester = classes.get_semester()
 
-optimizer = input("enter 1 to optimize for least classes on a day and 2 to spread classes out evenly: ")
-do_prof_optimize = input("enter 1 to select professors according to professor.json: ")
+optimizer = int(input("enter 1 to optimize for least classes on a day and 2 to spread classes out evenly: "))
+do_prof_optimize = int(input("enter 1 to select professors according to professor.json: "))
 clases = []
 if optimizer == 1:
-	day = input("enter the number for what day you want to have the least classes (1 is monday, 5 is friday, 0 is any class: ")
+	day = int(input("enter the number for what day you want to have the least classes (1 is monday, 5 is friday, 0 is any class: "))
 	clases = optimise.min_class_day(semester,day)
 elif optimizer == 2:
 	clases = optimise.even_split(semester)
 else:
 	clases = classes.get_all_classes_lazy(semester)
 if do_prof_optimize == 1:
-	clases = optimize.optimize_prof(semester)
+	clases = optimise.optimize_prof(semester)
 view = int(input("what schedule number would you like to see. There are " + str(len(clases)) + " classes: "))
 view-=1
 
