@@ -16,7 +16,7 @@ elif optimizer == 2:
 else:
 	clases = classes.get_all_classes_lazy(semester)
 if do_prof_optimize == 1:
-	clases = optimise.optimize_prof(semester)
+	clases = optimise.optimize_prof(clases,semester)
 view = int(input("what schedule number would you like to see. There are " + str(len(clases)) + " classes: "))
 view-=1
 

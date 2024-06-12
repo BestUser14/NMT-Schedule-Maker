@@ -46,18 +46,17 @@ def min_class_day(semester,min_day):
 	print("found " + str(len(results)) + " results with " + str(small_amount) + " classes on a certain day")
 	return results
 def even_split(semester):
-	return sorted(classes.get_all_classes_lazy(semester),key= lambda fancy: fancy_stddev(fancy,semester)) #[:number_to_view-1]
-def fancy_stddev(clas,semester):
+	return sorted(classes.get_all_classes_lazy(semester),key=fancy_stddev) #[:number_to_view-1]
+def fancy_stddev(clas):
 	temp = [0,0,0,0,0]
 	for i in range(len(clas)):
 		for day in calendars.find_class(clas[i],semester)["days"]:
 			temp[day_to_number[day]]+=1
 	return statistics.stdev(temp)
-def optimize_prof(semester):
+def optimize_prof(class_list,semester):
 	f = open('professor.json','r')
 	profs = json.loads(f.read())
 	f.close()
-	class_list = classes.get_all_classes_lazy(semester)
 	classy = []
 	for y in range(len(class_list)):
 		for i in range(len(class_list[y])):

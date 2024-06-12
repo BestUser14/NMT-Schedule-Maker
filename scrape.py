@@ -17,6 +17,7 @@ subjects = ['ACCT','AE','AFAS','ARTH','ARTS','BIOL','BMST','BIOT','BFIN','CH E',
 
 
 def parse(array,index):
+    #print(array)
     has_recitation=0
     jerson = {}
     jerson["CRN"] = array[index][4:-5]
@@ -49,14 +50,11 @@ def parse(array,index):
         jerson["recitation_date"]=array[index+23][19:-5]
         jerson["recitation_time"]=array[index+24][4:-5]
         jerson["recitation_location"]=array[index+25][4:-5]
-    #print(array[index:index+5])
     return json.dumps(jerson),has_recitation
 
 def super_parse(array):
     index=0
     listy = []
-    #print(array)
-    #print('\n\n\n\n\n\n\n\n\n\n')
     while(index+18<len(array)):
         temp,recitation=parse(array,index)
         listy.append(json.loads(temp))
@@ -105,7 +103,3 @@ def fast_parse(semester):
 #f = open("classes.json","w+")
 #f.write(json.dumps(jarson))
 #f.close()
-
-if __name__ == "__main__":
-    print(parse_subject("CHEM","202520"))
-	
