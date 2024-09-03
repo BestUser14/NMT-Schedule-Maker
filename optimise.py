@@ -46,8 +46,9 @@ def min_class_day(semester,min_day):
 	print("found " + str(len(results)) + " results with " + str(small_amount) + " classes on a certain day")
 	return results
 def even_split(semester):
-	return sorted(classes.get_all_classes_lazy(semester),key=fancy_stddev) #[:number_to_view-1]
-def fancy_stddev(clas):
+	print(semester)
+	return sorted(classes.get_all_classes_lazy(semester),key=lambda cl: fancy_stddev(cl,semester)) #[:number_to_view-1]
+def fancy_stddev(clas,semester):
 	temp = [0,0,0,0,0]
 	for i in range(len(clas)):
 		for day in calendars.find_class(clas[i],semester)["days"]:
