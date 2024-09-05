@@ -66,7 +66,7 @@ def super_parse(array):
     return(listy)
 
 def parse_subject(subject,semester):
-    page = requests.get('https://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term=202520&p_subj='+subject)
+    page = requests.get('https://banweb7.nmt.edu/pls/PROD/hwzkcrof.P_UncgSrchCrsOff?p_term='+semester+'&p_subj='+subject)
     if page.text.find('<table')==-1:
         return
     index = page.text.find('<th align="left" dp="6"><font color="white">Bookstore Link</font></th>')
