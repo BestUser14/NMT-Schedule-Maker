@@ -63,6 +63,14 @@ def super_parse(array):
             index+=19
         if(recitation==-1):
             index+=19
+    try:
+        temp,recitation=parse(array,index) #This is where the sandia off campus class breaks
+                                           #If i fixed the sandia class there wouldnt be a try and except here
+        listy.append(json.loads(temp))
+    except:
+        pass
+        #print(array[index:])
+    
     return(listy)
 
 def parse_subject(subject,semester):
@@ -73,7 +81,7 @@ def parse_subject(subject,semester):
     newtext = page.text[index+82:]
     index=newtext.find("</table>")
     newtext = newtext[0:index]
-    #f = open('text.txt','w')
+    #f = open(subject+'.txt','w')
     #f.write(newtext)
     array = newtext.splitlines(keepends=False)
     #jerson = {"CRN":"20492","subject":"ENGL","class":"1110-01","campus":"M","days":"MWF","date":"08/14/2023-12/08/2023","time":"1000-1050","location":"SPEARE 117","hrs":"3","title":"Composition I","instructor":"Eric D. Lackey","seats":"0","limit":"20","enroll":"20","waitlist":"0","fee":"$25","link":"link"}
