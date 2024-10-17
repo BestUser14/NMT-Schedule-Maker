@@ -5,6 +5,7 @@ import calendars
 days = ['N','M','T','W','R','F'] #N should never appear
 day_to_number = {"M":0,"T":1,"W":2,"R":3,"F":4}
 def min_class_day(semester,min_day):
+	#can be condensed like in no_tuesday
 	class_list = classes.get_all_classes_lazy(semester)
 	results = []
 	small_amount = 100
@@ -46,8 +47,27 @@ def min_class_day(semester,min_day):
 	print("found " + str(len(results)) + " results with " + str(small_amount) + " classes on a certain day")
 	return results
 def even_split(semester):
-	print(semester)
 	return sorted(classes.get_all_classes_lazy(semester),key=lambda cl: fancy_stddev(cl,semester)) #[:number_to_view-1]
+
+def no_tuesday(semester):
+	class_list = classes.get_all_classes_lazy(semester)
+	results = []
+	small_amount = 100
+	temp_amount=1
+	for x in range(len(class_list)):
+		for y in range(len(class_list[x])):
+			if ('T' in calendars.find_class(class_list[x][y],semester)["days"]) and ('R' in calendars.find_class(class_list[x][y],semester)["days"]):
+				temp_amount+=1
+		if temp_amount<small_amount:
+			results = []
+			small_amount = temp_amount
+			results.append(class_list[x])
+		if temp_amount==small_amount:
+			results.append(class_list[x])
+		temp_amount=0
+	print("found " + str(len(results)) + " results with " + str(small_amount) + " TH classes")
+	return results
+
 def fancy_stddev(clas,semester):
 	temp = [0,0,0,0,0]
 	for i in range(len(clas)):

@@ -5,7 +5,7 @@ import scrape
 
 semester = classes.get_semester()
 
-optimizer = int(input("enter 1 to optimize for least classes on a day and 2 to spread classes out evenly: "))
+optimizer = int(input("enter 1 to optimize for least classes on a day, 2 to spread classes out evenly, and 3 to avoid TR classes: "))
 do_prof_optimize = int(input("enter 1 to select professors according to professor.json: "))
 clases = []
 if optimizer == 1:
@@ -13,6 +13,8 @@ if optimizer == 1:
 	clases = optimise.min_class_day(semester,day)
 elif optimizer == 2:
 	clases = optimise.even_split(semester)
+elif optimizer ==3:
+	clases = optimise.no_tuesday(semester)
 else:
 	clases = classes.get_all_classes_lazy(semester)
 if do_prof_optimize == 1:
