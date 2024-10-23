@@ -53,7 +53,7 @@ def no_tuesday(semester):
 	class_list = classes.get_all_classes_lazy(semester)
 	results = []
 	small_amount = 100
-	temp_amount=1
+	temp_amount=0
 	for x in range(len(class_list)):
 		for y in range(len(class_list[x])):
 			if ('T' in calendars.find_class(class_list[x][y],semester)["days"]) and ('R' in calendars.find_class(class_list[x][y],semester)["days"]):
