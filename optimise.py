@@ -89,9 +89,14 @@ def optimize_prof(class_list,semester):
 	return classy
 def print_class_information(clas,semester):
 	classs = calendars.find_class(clas,semester)
+	print("Title: " + str(classs["title"]))
 	print(str(classs["subject"]) + " " + str(classs["class"]))
 	print("CRN " + str(classs["CRN"]))
+	print("Days " + str(classs["days"]))
+	print("Time " + str(classs["time"]))
+	print("Location " + str(classs["location"]))
 	print("seats, limit, enroll:   " + str(classs["seats"]) + ", " + str(classs["limit"]) + ", " + str(classs["enroll"]) + "    waitlist " + str(classs["waitlist"]))
+	print("hours " + str(classs["hrs"]))
 	print('')
 	
 if __name__ == "__main__":
