@@ -19,8 +19,11 @@ else:
 	clases = classes.get_all_classes_lazy(semester)
 if do_prof_optimize == 1:
 	clases = optimise.optimize_prof(clases,semester)
-view = int(input("what schedule number would you like to see. There are " + str(len(clases)) + " classes: "))
-view-=1
+old_view=-100
+while((view := int(input("what schedule number would you like to see. There are " + str(len(clases)) + " classes: "))-1)!=old_view):
+	old_view=view
+	optimise.show_cal(clases[view],semester)
+	print("enter the same schedule to select it")
 
 print(clases[view])
 if len(clases) == 0:

@@ -2,6 +2,8 @@ import json
 import statistics
 import classes
 import calendars
+from matplotlib.patches import Rectangle
+import matplotlib.pyplot as plt
 days = ['N','M','T','W','R','F'] #N should never appear
 day_to_number = {"M":0,"T":1,"W":2,"R":3,"F":4}
 def min_class_day(semester,min_day):
@@ -98,6 +100,29 @@ def print_class_information(clas,semester):
 	print("seats, limit, enroll:   " + str(classs["seats"]) + ", " + str(classs["limit"]) + ", " + str(classs["enroll"]) + "    waitlist " + str(classs["waitlist"]))
 	print("hours " + str(classs["hrs"]))
 	print('')
+
+def show_cal(class_list,semester):
+	classes=[]
+	height=8
+	width=10
+	plt.figure(figsize=(width,height))
+	plt.xlim(1,8)
+	plt.ylim(800,2200)
+	plt.yticks([800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200])
+	plt.gca().invert_yaxis()
+	plt.grid()
+	plt.xlabel("Day of week")
+	plt.ylabel("Time")
+	plt.title("Schedule")
+	ax=plt.gca().axes
+	for i in class_list:
+		classs = calendars.find_class(i,semester)
+		for day in classs["days"]:
+			time=classs["time"]
+			start=int(time.split('-')[0])
+			end=int(time.split('-')[1])
+			ax.add_patch(Rectangle((day_to_number[day]+2,start),1,end-start))
+	plt.show()
 	
 if __name__ == "__main__":
 	#semester = classes.get_semester()
