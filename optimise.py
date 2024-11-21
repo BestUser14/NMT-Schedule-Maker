@@ -119,9 +119,11 @@ def show_cal(class_list,semester):
 		classs = calendars.find_class(i,semester)
 		for day in classs["days"]:
 			time=classs["time"]
-			start=int(time.split('-')[0])
-			end=int(time.split('-')[1])
-			ax.add_patch(Rectangle((day_to_number[day]+2,start),1,end-start))
+			start=(time.split('-')[0])
+			end=(time.split('-')[1])
+			new_start=(int(start[0:2])*100)+(int(start[2:4])*1.6666666666)
+			new_end=(int(end[0:2])*100)+(int(end[2:4])*1.6666666666)
+			ax.add_patch(Rectangle((day_to_number[day]+2,new_start),1,new_end-new_start))
 	plt.show()
 	
 if __name__ == "__main__":
