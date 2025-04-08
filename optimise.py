@@ -125,6 +125,7 @@ def show_cal(class_list,semester):
 			new_end=(int(end[0:2])*100)+(int(end[2:4])*1.6666666666)
 			ax.add_patch(Rectangle((day_to_number[day]+2,new_start),1,new_end-new_start))
 	plt.show()
+	plt.savefig("schedules/calendar.png")
 	
 if __name__ == "__main__":
 	#semester = classes.get_semester()
