@@ -1,7 +1,7 @@
 # NMT-Schedule-Maker
 This program automatically makes schedules for New Mexico Institute of Mining and Technology classes. These schedules can be organized in a few ways based on how the user wants their schedule to be organized, including evenly spreading out classes or minimizing classes on a certain day, as well as preferred professors for classes.
 
-To use this program [https://www.python.org/about/install](python (and possible pip))
+To use this program [https://www.python.org/about/install](URL python (and possible pip))
 
 ```console
 	pip install -r requirements.txt
