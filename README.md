@@ -7,7 +7,7 @@ On windows:
 	go to python.org and install the newewest verison of python3
 	go to the command line and type this command
 
-		py -m pip install pytz ics datetime requests matplotib
+		py -m pip -r install requirements.txt
 
 	#then you can run the program by running this in the command line in the program folder
 		py main.py
