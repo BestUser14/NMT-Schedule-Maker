@@ -20,6 +20,10 @@ On linux (debian):
 		python3 main.py
 none of the above was proofread or tested, if it doesnt work, look at the python error and install whatever library it says is missing
 
+```console
+	pip install -r requirements.txt
+	py main.py
+```
 To run the program three json files should have values in them that you want
 
 classes.json
